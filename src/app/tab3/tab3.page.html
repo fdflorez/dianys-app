@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Tienda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="hero">
+    <img src="assets/logo.png" alt="Dianys Technology" />
+    <h2>Dianys Technology</h2>
+    <p>Venta de dispositivos y servicio técnico</p>
+    <ion-button color="success" (click)="abrirWhatsApp()">
+      <ion-icon slot="start" name="logo-whatsapp"></ion-icon> Escríbenos
+    </ion-button>
+  </div>
+
+  <ion-list-header><ion-label>Mi cuenta</ion-label></ion-list-header>
+  <ion-list inset="true" *ngIf="auth.usuario() as u">
+    <ion-item>
+      <ion-icon slot="start" name="person-circle-outline" color="primary"></ion-icon>
+      <ion-label>
+        <h3>{{ u.nombre }}</h3>
+        <p>{{ u.email }} · {{ u.rol }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item button detail="false" (click)="cerrarSesion()">
+      <ion-icon slot="start" name="log-out-outline" color="danger"></ion-icon>
+      <ion-label color="danger">Cerrar sesión</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list-header><ion-label>Servicios</ion-label></ion-list-header>
+  <ion-list inset="true">
+    <ion-item *ngFor="let s of servicios">
+      <ion-icon slot="start" [name]="s.icono" color="primary"></ion-icon>
+      <ion-label class="ion-text-wrap">
+        <h3>{{ s.titulo }}</h3>
+        <p>{{ s.texto }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list-header><ion-label>Conexión con la API REST</ion-label></ion-list-header>
+  <ion-list inset="true">
+    <ion-item>
+      <ion-input label="URL de la API" labelPlacement="stacked" [(ngModel)]="apiUrl"
+                 inputmode="url" placeholder="http://10.0.2.2/dianys_technology/api/v1"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="ion-text-wrap"><p>
+        Navegador: <code>localhost</code> · Emulador Android: <code>10.0.2.2</code> ·
+        Celular físico: IP del PC (ej. <code>192.168.1.10</code>)</p></ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button slot="start" (click)="guardarUrl()" [disabled]="probando">
+        <ion-spinner *ngIf="probando" name="dots"></ion-spinner>
+        <span *ngIf="!probando">Guardar y probar</span>
+      </ion-button>
+      <ion-button slot="end" fill="clear" (click)="restaurarUrl()">Por defecto</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list-header><ion-label>Acerca de la app</ion-label></ion-list-header>
+  <ion-list inset="true">
+    <ion-item>
+      <ion-label>Plataforma</ion-label>
+      <ion-note slot="end">{{ plataforma }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Versión</ion-label>
+      <ion-note slot="end">{{ version }}</ion-note>
+    </ion-item>
+    <ion-item button detail="true" href="https://fdflorez.github.io/dianys-app/privacidad.html" target="_blank">
+      <ion-label>Política de privacidad</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let p of plugins">
+      <ion-label class="ion-text-wrap"><h3><code>{{ p.nombre }}</code></h3><p>{{ p.uso }}</p></ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

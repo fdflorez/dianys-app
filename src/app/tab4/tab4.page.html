@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Mi carrito</ion-title>
+    <ion-buttons slot="end" *ngIf="carrito.items().length > 0">
+      <ion-button (click)="vaciar()" aria-label="Vaciar carrito">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="vacio ion-padding ion-text-center" *ngIf="carrito.items().length === 0">
+    <ion-icon name="cart-outline" color="medium"></ion-icon>
+    <h2>Tu carrito está vacío</h2>
+    <p>Agrega productos desde el catálogo.</p>
+    <ion-button routerLink="/tabs/tab1">Ver catálogo</ion-button>
+  </div>
+
+  <ion-list *ngIf="carrito.items().length > 0">
+    <ion-item *ngFor="let i of carrito.items()">
+      <ion-thumbnail slot="start">
+        <img [src]="imagen(i)" [alt]="i.nombre" (error)="imagenRespaldo($event)" />
+      </ion-thumbnail>
+      <ion-label class="ion-text-wrap">
+        <h3>{{ i.nombre }}</h3>
+        <p>{{ i.precio | currency:'COP':'symbol-narrow':'1.0-0' }} c/u</p>
+        <div class="cantidad">
+          <ion-button size="small" fill="outline" (click)="restar(i)" aria-label="Restar">
+            <ion-icon slot="icon-only" name="remove"></ion-icon>
+          </ion-button>
+          <strong>{{ i.cantidad }}</strong>
+          <ion-button size="small" fill="outline" (click)="sumar(i)" aria-label="Sumar">
+            <ion-icon slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-label>
+      <div slot="end" class="subtotal">
+        <strong>{{ i.precio * i.cantidad | currency:'COP':'symbol-narrow':'1.0-0' }}</strong>
+        <ion-button fill="clear" color="danger" size="small" (click)="quitar(i)" aria-label="Quitar">
+          <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-list-header *ngIf="carrito.pedidos().length > 0"><ion-label>Mis pedidos</ion-label></ion-list-header>
+  <ion-list inset="true" *ngIf="carrito.pedidos().length > 0">
+    <ion-item *ngFor="let p of carrito.pedidos()">
+      <ion-icon slot="start" name="receipt-outline" color="primary"></ion-icon>
+      <ion-label>
+        <h3>{{ p.codigo }}</h3>
+        <p>{{ p.fecha | date:'d/M/yyyy, h:mm a' }} · {{ p.items.length }} producto(s)</p>
+      </ion-label>
+      <ion-note slot="end">{{ p.total | currency:'COP':'symbol-narrow':'1.0-0' }}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer *ngIf="carrito.items().length > 0">
+  <ion-toolbar>
+    <div class="resumen">
+      <span>{{ carrito.cantidadTotal() }} artículo(s)</span>
+      <strong>Total: {{ carrito.total() | currency:'COP':'symbol-narrow':'1.0-0' }}</strong>
+    </div>
+    <ion-button expand="block" color="success" class="ion-margin-horizontal" (click)="finalizar()">
+      <ion-icon slot="start" name="checkmark-done-outline"></ion-icon>
+      Finalizar pedido
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

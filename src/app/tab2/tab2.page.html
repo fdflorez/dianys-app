@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Fotos de mi equipo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="intro">
+    <ion-icon name="construct-outline" color="primary"></ion-icon>
+    <p>¿Vas a traer un equipo a <strong>servicio técnico</strong>? Tómale fotos al daño,
+      al serial y a los accesorios. Quedan guardadas en tu celular aunque cierres la app.</p>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let f of photoService.photos; index as position">
+        <ion-img [src]="f.webviewPath" (click)="showActionSheet(f, position)"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="vacio" *ngIf="photoService.photos.length === 0">
+    <ion-icon name="camera-outline"></ion-icon>
+    <p>Aún no hay fotos.<br />Toca el botón de la cámara para tomar la primera.</p>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="primary" (click)="addPhotoToGallery()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,12 @@
+{
+  // Terminal > Ejecutar tarea...  (Ctrl+Shift+P > "Tasks: Run Task")
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "1. Instalar dependencias (npm install)", "type": "shell", "command": "npm install", "problemMatcher": [] },
+    { "label": "2. Probar en navegador (ionic serve)", "type": "shell", "command": "npx ionic serve", "isBackground": true, "problemMatcher": [] },
+    { "label": "3. Compilar web (ionic build)", "type": "shell", "command": "npx ionic build", "problemMatcher": [] },
+    { "label": "4. Sincronizar Android (ionic cap sync)", "type": "shell", "command": "npx ionic build && npx cap sync android", "problemMatcher": [] },
+    { "label": "5. Abrir en Android Studio (ionic cap open android)", "type": "shell", "command": "npx cap open android", "problemMatcher": [] },
+    { "label": "6. Ejecutar en emulador (ionic cap run android)", "type": "shell", "command": "npx ionic cap run android -l --external", "problemMatcher": [] }
+  ]
+}

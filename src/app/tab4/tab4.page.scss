@@ -1,0 +1,8 @@
+.vacio { margin-top: 15vh;
+  ion-icon { font-size: 72px; }
+  p { color: var(--ion-color-medium); } }
+ion-thumbnail { --size: 64px; background: #fff; border-radius: 8px;
+  img { object-fit: contain; } }
+.cantidad { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.subtotal { display: flex; flex-direction: column; align-items: flex-end; font-size: 14px; }
+.resumen { display: flex; justify-content: space-between; padding: 8px 16px; font-size: 16px; }

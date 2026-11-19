@@ -1,0 +1,20 @@
+.estado {
+  display: flex; align-items: center; gap: 8px;
+  margin: 12px 12px 0; padding: 8px 12px; border-radius: 10px;
+  font-size: 13px; background: rgba(var(--ion-color-success-rgb), .12);
+  color: var(--ion-color-success-shade);
+  &.local { background: rgba(var(--ion-color-warning-rgb), .15); color: var(--ion-color-warning-shade); }
+}
+.producto { margin: 4px; height: calc(100% - 8px); }
+.foto {
+  background: #fff; height: 130px; display: flex; align-items: center; justify-content: center;
+  img { max-height: 120px; max-width: 90%; object-fit: contain; }
+}
+ion-card-title { font-size: 15px; line-height: 1.25; }
+ion-card-subtitle { font-size: 11px; }
+.precio { font-weight: 700; color: var(--ion-color-primary); font-size: 16px; margin-bottom: 6px;
+  &.grande { font-size: 24px; margin: 8px 0; } }
+.detalle-foto { background: #fff; border-radius: 14px; text-align: center; padding: 12px;
+  img { max-height: 200px; max-width: 100%; object-fit: contain; } }
+.agregar { margin-top: 8px; }
+.sub { color: var(--ion-color-medium); margin-top: -6px; }

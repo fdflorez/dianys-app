@@ -1,0 +1,6 @@
+.contenedor { max-width: 420px; margin: 0 auto; padding-top: 8vh; }
+.marca { text-align: center; margin-bottom: 16px;
+  img { width: 96px; height: 96px; object-fit: contain; }
+  h1 { font-weight: 800; margin: 8px 0 4px; }
+  p { color: var(--ion-color-medium); margin: 0; } }
+.error { display: flex; align-items: center; gap: 6px; margin: 8px 16px; font-size: 14px; }
