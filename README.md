@@ -18,8 +18,7 @@ etapa **Demuestra · Actividad 6: publicación y distribución**.
 
 | Documento | Archivo |
 |---|---|
-| Documento de pruebas (normas APA) | [`docs/entregables/Documento_de_pruebas_Dianys_Technology.pdf`](docs/entregables/Documento_de_pruebas_Dianys_Technology.pdf) |
-| Documento de cierre ABP | [`docs/entregables/Documento_de_cierre_ABP_Dianys_Technology.pdf`](docs/entregables/Documento_de_cierre_ABP_Dianys_Technology.pdf) |
+
 | Evidencias de pruebas | [`docs/pruebas/`](docs/pruebas) (navegador, emulador y dispositivo real) |
 | Material de la ficha de tienda | [`docs/ficha/`](docs/ficha) |
 
