@@ -51,6 +51,7 @@ export interface ItemCarrito {
   id: number;
   nombre: string;
   precio: number;
+  imagen: string | null;      // nombre del archivo (para la imagen de respaldo)
   imagen_url: string | null;
   stock: number;
   cantidad: number;

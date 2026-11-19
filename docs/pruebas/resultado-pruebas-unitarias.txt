@@ -1,0 +1,11 @@
+ ✓  app  src/app/services/carrito.service.spec.ts > CarritoService > agrega productos y calcula el total 62ms
+ ✓  app  src/app/services/carrito.service.spec.ts > CarritoService > no supera el stock disponible 10ms
+ ✓  app  src/app/services/carrito.service.spec.ts > CarritoService > confirma el pedido, lo guarda en el historial y vacía el carrito 87ms
+ ✓  app  src/app/services/carrito.service.spec.ts > CarritoService > quita productos del carrito 8ms
+ ✓  app  src/app/tabs/tabs.page.spec.ts > TabsPage > should create 148ms
+ ✓  app  src/app/app.component.spec.ts > AppComponent > should create the app 156ms
+ ✓  app  src/app/tab1/tab1.page.spec.ts > Tab1Page > should create 216ms
+ ✓  app  src/app/tab3/tab3.page.spec.ts > Tab3Page > should create 247ms
+ ✓  app  src/app/tab2/tab2.page.spec.ts > Tab2Page > should create 178ms
+ Test Files  6 passed (6)
+      Tests  9 passed (9)

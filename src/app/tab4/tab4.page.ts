@@ -24,8 +24,11 @@ export class Tab4Page implements OnInit {
     return i.imagen_url || 'assets/logo.png';
   }
 
-  imagenRespaldo(ev: Event) {
-    (ev.target as HTMLImageElement).src = 'assets/logo.png';
+  /** Si la imagen del servidor no carga, usa la copia incluida en la app */
+  imagenRespaldo(ev: Event, i: ItemCarrito) {
+    const img = ev.target as HTMLImageElement;
+    const local = 'assets/productos/' + (i.imagen ?? '').replace(/\.[a-z]+$/i, '.jpg');
+    img.src = img.src.includes('assets/') || !i.imagen ? 'assets/logo.png' : local;
   }
 
   sumar(i: ItemCarrito) {

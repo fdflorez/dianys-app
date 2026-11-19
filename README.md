@@ -14,6 +14,15 @@ etapa **Demuestra · Actividad 6: publicación y distribución**.
 | iOS | Xcode 16+ · Swift Package Manager |
 | Política de privacidad | <https://fdflorez.github.io/dianys-app/privacidad.html> |
 
+## Entregables
+
+| Documento | Archivo |
+|---|---|
+| Documento de pruebas (normas APA) | [`docs/entregables/Documento_de_pruebas_Dianys_Technology.pdf`](docs/entregables/Documento_de_pruebas_Dianys_Technology.pdf) |
+| Documento de cierre ABP | [`docs/entregables/Documento_de_cierre_ABP_Dianys_Technology.pdf`](docs/entregables/Documento_de_cierre_ABP_Dianys_Technology.pdf) |
+| Evidencias de pruebas | [`docs/pruebas/`](docs/pruebas) (navegador, emulador y dispositivo real) |
+| Material de la ficha de tienda | [`docs/ficha/`](docs/ficha) |
+
 ## Funcionalidades exigidas
 
 | Requisito | Dónde está | Qué hace |
@@ -58,6 +67,11 @@ Cuentas de prueba de la API (base de datos de ejemplo del proyecto web):
 | Celular por Wi-Fi | IP del PC, por ejemplo `http://192.168.1.10/dianys_technology/api/v1` |
 
 La URL se cambia en **Login › Configurar servidor** o en **Tienda › Conexión con la API REST**.
+
+> El WebView de Android carga la app desde `https://localhost` y bloquea las imágenes `http` de otros hosts
+> (contenido mixto). Por eso, con `10.0.2.2` o una IP de la red, la app muestra las copias de las imágenes
+> incluidas en `src/assets/productos`. Con `adb reverse tcp:80 tcp:80` (host `127.0.0.1`) o con la API
+> publicada por HTTPS se ven las imágenes del servidor.
 
 ## De Ionic a las tiendas en 6 pasos
 

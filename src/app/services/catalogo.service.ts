@@ -91,7 +91,8 @@ export class CatalogoService {
       const resp = await this.peticion(`/dispositivos?${params}`, {}, 5000);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const json = (await resp.json()) as RespuestaApi<Dispositivo[]>;
-      return { datos: json.datos ?? [], origen: 'api' };
+      const datos = (json.datos ?? []).map(d => ({ ...d, imagen_url: this.ajustarUrlImagen(d.imagen_url) }));
+      return { datos, origen: 'api' };
     } catch (e: any) {
       const texto = q.trim().toLowerCase();
       const datos = CATALOGO_LOCAL.filter(d =>
@@ -101,6 +102,27 @@ export class CatalogoService {
         d.tipo.nombre.toLowerCase().includes(texto));
       return { datos, origen: 'local', error: e?.message ?? 'Sin conexión' };
     }
+  }
+
+  /**
+   * La API arma las URL de las imágenes con "localhost". En el emulador o
+   * en un celular ese host no es el PC, así que se cambia por el servidor
+   * que respondió (por ejemplo 10.0.2.2 o la IP del PC).
+   */
+  private ajustarUrlImagen(url: string | null): string | null {
+    if (!url) return url;
+    try {
+      const imagen = new URL(url);
+      const api = new URL(this.apiUrl);
+      if (['localhost', '127.0.0.1'].includes(imagen.hostname) && imagen.host !== api.host) {
+        imagen.protocol = api.protocol;
+        imagen.host = api.host;
+        return imagen.toString();
+      }
+    } catch {
+      // URL relativa o inválida: se deja igual
+    }
+    return url;
   }
 
   /** Comprueba si la API responde (GET /) */

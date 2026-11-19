@@ -20,7 +20,7 @@
   <ion-list *ngIf="carrito.items().length > 0">
     <ion-item *ngFor="let i of carrito.items()">
       <ion-thumbnail slot="start">
-        <img [src]="imagen(i)" [alt]="i.nombre" (error)="imagenRespaldo($event)" />
+        <img [src]="imagen(i)" [alt]="i.nombre" (error)="imagenRespaldo($event, i)" />
       </ion-thumbnail>
       <ion-label class="ion-text-wrap">
         <h3>{{ i.nombre }}</h3>

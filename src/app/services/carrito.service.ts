@@ -53,6 +53,7 @@ export class CarritoService {
         id: d.id,
         nombre: d.nombre,
         precio: d.precio,
+        imagen: d.imagen,
         imagen_url: d.imagen_url,
         stock: d.stock,
         cantidad: Math.min(cantidad, d.stock),
